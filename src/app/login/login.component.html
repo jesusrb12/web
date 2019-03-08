@@ -1,3 +1,49 @@
-<p>
-  <input type="button" id="button" name="button" value="enviar" (click)="redirectLogin()" >
-</p>
+<div class="generic-container">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="padding: 8px 15px;" align="center"><span style="font-size:20px">
+        <p>Sistema Único de Logueo</p>
+      </span></div>
+    <div class="formcontainer">
+      <div class="panel panel-default">
+        <div class="formcontainer">
+          <form name="form" #formLogin="ngForm">
+
+            <div class="row">
+              <div class="form-group ">
+                <div style="clear:both;margin-bottom:2px"></div>
+                <label class="col-xs-12 col-sm-2 col-md-2 control-lable" for="nombre">Usuario</label>
+                <div class="col-xs-12 col-sm-10 col-md-10">
+                  <input type="text" id="username" name="username" [(ngModel)]="model.username"
+                    class="form-control input-sm" required name="username" placeholder="username" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group ">
+                <div style="clear:both;margin-bottom:2px"></div>
+                <label class="col-xs-12 col-sm-2 col-md-2 control-lable" for="nombre">Password</label>
+                <div class="col-xs-12 col-sm-10 col-md-10">
+                  <input type="password" id="password" name="password" [(ngModel)]="model.password"
+                    class="form-control input-sm" required placeholder="" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div *ngIf="errorMessage" class="alert alert-danger"> {{ errorMessage }}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-actions floatRight">
+                  <button class="btn btn-primary btn-sm" name="login" (click)="login()">Login</button>
+                </div>
+              </div>
+            </div>
+            <div style="clear:both"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
