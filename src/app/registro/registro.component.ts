@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente,Producto,Servicio } from '../model/app.servicio';
+import { Cliente, Producto, Servicio } from '../model/app.servicio';
+import { ServicioService } from './servicio.service';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  styleUrls: ['./registro.component.css'],
+  providers: [ServicioService]
 })
 export class RegistroComponent implements OnInit {
   servicios: Servicio[] = [];
@@ -13,13 +15,23 @@ export class RegistroComponent implements OnInit {
   cliente: Cliente;
   errorMessage: string;
 
-  constructor() { }
+  constructor(private service: ServicioService) { }
 
   ngOnInit() {
     this.servicio = new Servicio();
     this.serviciotmp = new Servicio();
     this.servicio.indSave = null;
-    //this.getServicios();
+    this.getServicios();
   }
 
+  public getServicios() {
+    this.service.getServicios().subscribe(
+      servicios => {
+        console.log(JSON.stringify(servicios));
+        this.servicios = servicios;
+        this.serviciotmp = servicios[0];
+      },
+      error => { this.errorMessage = <any>error; }
+    );
+  }
 }

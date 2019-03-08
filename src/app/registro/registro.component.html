@@ -1,3 +1,27 @@
-<p>
-  registro works!
-</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Código</th>
+      <th scope="col">Descripión</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of servicios">
+      <td>{{p.codigo}}</td>
+      <td>{{p.cliente.nombres}}</td>
+      <td>{{p.cliente.codigo}}</td>
+      <td>{{p.producto.descripcion}}</td>
+      <td>
+        <p *ngIf="p.estado=='0'">PENDIENTE</p>
+        <p *ngIf="p.estado=='1'">PAGADO</p>
+      </td>
+      <td>
+        <button type="button" class="btn btn-success btn-sm" (click)="update(p)">Pagar</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="delete(p.codigo)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
