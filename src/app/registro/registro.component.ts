@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Cliente, Producto, Servicio } from '../model/app.servicio';
+import { ModalDialogService, SimpleModalComponent } from 'ngx-modal-dialog';
+import { CustomModalComponent } from '../dialogs/custom-modal/custom-modal.component';
 import { ServicioService } from './servicio.service';
 
 @Component({
@@ -15,7 +17,7 @@ export class RegistroComponent implements OnInit {
   cliente: Cliente;
   errorMessage: string;
 
-  constructor(private service: ServicioService) { }
+  constructor(private service: ServicioService, private modalDialogService: ModalDialogService, private viewContainer: ViewContainerRef) { }
 
   ngOnInit() {
     this.servicio = new Servicio();
@@ -33,5 +35,18 @@ export class RegistroComponent implements OnInit {
       },
       error => { this.errorMessage = <any>error; }
     );
+  }
+
+  public openCustomModal(pServicio) {
+    console.log("dataEntrada", pServicio);
+    this.modalDialogService.openDialog(this.viewContainer,
+      {
+        title: 'Información de Deuda',
+        childComponent: CustomModalComponent,
+        settings: {
+          closeButtonClass: 'close theme-icon-close'
+        },
+        data: pServicio
+      });
   }
 }
