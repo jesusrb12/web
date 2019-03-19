@@ -49,4 +49,41 @@ export class RegistroComponent implements OnInit {
         data: pServicio
       });
   }
+
+  public submit() {
+    if (this.servicio.indSave === null) {
+      this.servicio.cliente = this.serviciotmp.cliente;
+      this.servicio.producto = this.serviciotmp.producto;
+      this.servicio.estado = '0'; console.log('Saving Producto', this.servicio);
+      this.create();
+    } else {
+      console.log('Producto update ', this.servicio);
+      //this.updateProducto();
+    }
+    //this.resetear();
+  }
+  public create() {
+    this.service.create(this.servicio).subscribe(transaccion => {
+      console.log(transaccion); this.getServicios();
+    },
+      error => { this.errorMessage = <any>error; });
+  }
+
+  public update(servicio: Servicio) {
+    servicio.estado = "1";
+    this.service.update(servicio).subscribe(
+      transaccion => {
+        console.log(transaccion);
+        this.getServicios();
+      },
+      error => { this.errorMessage = <any>error; });
+  }
+
+  public delete(codigo) {
+    console.log("codigo", codigo);
+    this.service.deleteServicio(codigo).subscribe(transaccion => {
+      console.log(transaccion); this.getServicios();
+    }, error => { this.errorMessage = <any>error; }
+    );
+  }
 }

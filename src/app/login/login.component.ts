@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
-  public login() {
+  public login0() {
     if (this.model.username == "user" && this.model.password == "123") {
       console.log(JSON.stringify(this.model));
       this.redirectLogin();
@@ -39,6 +39,21 @@ export class LoginComponent implements OnInit {
     //   }
     // );
   }
+
+  public login() {
+    this.service.getToken(this.model).subscribe(
+      usuario => {
+        console.log("usuario", usuario);
+        sessionStorage.setItem("user", usuario);
+        this.redirectLogin();
+      },
+      error => {
+        this.errorMessage = <any>error; console.log("error login", this.errorMessage);
+        this.router.navigate(['/mlogin']);
+      }
+    );
+  }
+
 
   public redirectLogin() {
     this.router.navigate(['/mestructura/estructura/minicio']);

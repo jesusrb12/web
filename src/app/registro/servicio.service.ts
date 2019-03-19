@@ -4,6 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Servicio, Cliente, Producto } from '../model/app.servicio';
+import { Transaccion } from '../model/transaccion';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +28,8 @@ export class ServicioService {
       return of(result as T);
     };
   }
-  private servTest: Servicio[]=[];
+
+  private servTest: Servicio[] = [];
   public getServicios(): Observable<Servicio[]> {
     // return this.http.get<Servicio[]>(this.servicioUrl + "/servicios").pipe(
     //   catchError(this.handleError('getServicios', [])));
@@ -45,4 +51,28 @@ export class ServicioService {
     this.servTest.push(sr1);
     return of(this.servTest as Servicio[]);
   }
+
+  public create(servicio: Servicio): Observable<Transaccion> {
+    return this.http.post<Transaccion>(this.servicioUrl + "/servicio/create",
+      JSON.stringify(servicio), httpOptions).pipe(
+        tap((transaccion: Transaccion) => console.log(transaccion.codigo)),
+        catchError(this.handleError<Transaccion>('create'))
+      );
+  }
+
+  public deleteServicio(id: number): Observable<Transaccion> {
+    return this.http.delete<Transaccion>(this.servicioUrl + "/servicio/delete/" + id, httpOptions).pipe(
+      tap((transaccion: Transaccion) => console.log(transaccion.codigo)),
+      catchError(this.handleError<Transaccion>('deleteHero'))
+    )
+  }
+
+  public update(servicio: Servicio): Observable<Transaccion> {
+    return this.http.put<Transaccion>(this.servicioUrl + "/servicio/update",
+      JSON.stringify(servicio), httpOptions).pipe(
+        tap((transaccion: Transaccion) => console.log(transaccion.codigo)),
+        catchError(this.handleError<Transaccion>('update'))
+      );
+  }
+
 }
