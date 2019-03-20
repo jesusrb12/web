@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AutenticacionGuardService } from './login/autenticacion-guard.service';
+import { AutenticacionGuardService } from './security/autenticacion-guard.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'mlogin', pathMatch: 'full' },

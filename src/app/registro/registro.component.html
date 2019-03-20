@@ -57,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of servicios | paginate: { itemsPerPage: 2, currentPage: p }" (click)="openCustomModal(p)">
+          <tr *ngFor="let p of servicios | paginate: { itemsPerPage: 2, currentPage: servicio }" (click)="openCustomModal(p)">
             <td>{{p.codigo}}</td>
             <td>{{p.cliente.nombres}}</td>
             <td>{{p.cliente.codigo}}</td>

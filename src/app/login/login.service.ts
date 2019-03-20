@@ -17,25 +17,22 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  // public getToken(usuario: Usuario) {
-  //   this.usuario = new Usuario();
-  //   this.usuario.username = "user"
-  //   this.usuario.password = "123";
-  //   this.usuario.token = "1234";
-
-  //   return this.usuario;
-  // }
-
   public getToken(usuario: Usuario): Observable<any> {
-    return this.http.post<any>(this.servicioUrl,
-      JSON.stringify(usuario), httpOptions).pipe(map((res: HttpResponse<any>) => {
-        console.log("DATA = " + res.headers.get("Authorization"));
-        if (res.headers.has("Authorization")) {
-          console.log("DATA = " + res.headers.get("Authorization"));
-          usuario.token = res.headers.get("Authorization").slice(7);
-        }
-        return usuario;
-      }), catchError(this.handleError))
+    // return this.http.post<any>(this.servicioUrl,
+    //   JSON.stringify(usuario), httpOptions).pipe(map((res: HttpResponse<any>) => {
+    //     console.log("DATA = " + res.headers.get("Authorization"));
+    //     if (res.headers.has("Authorization")) {
+    //       console.log("DATA = " + res.headers.get("Authorization"));
+    //       usuario.token = res.headers.get("Authorization").slice(7);
+    //     }
+    //     return usuario;
+    //   }), catchError(this.handleError))
+
+    this.usuario = new Usuario();
+    this.usuario.username = "user"
+    this.usuario.password = "123";
+    this.usuario.token = "1234";
+    return of(this.usuario);
   }
   
   private handleError(error: any) {

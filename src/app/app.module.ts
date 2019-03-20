@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalDialogModule } from 'ngx-modal-dialog';
 import { CustomModalComponent } from './dialogs/custom-modal/custom-modal.component';
-import { AutenticacionGuardService } from './login/autenticacion-guard.service';
+import { AutenticacionGuardService } from './security/autenticacion-guard.service';
 
 @NgModule({
   declarations: [

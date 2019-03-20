@@ -31,25 +31,25 @@ export class ServicioService {
 
   private servTest: Servicio[] = [];
   public getServicios(): Observable<Servicio[]> {
-    // return this.http.get<Servicio[]>(this.servicioUrl + "/servicios").pipe(
-    //   catchError(this.handleError('getServicios', [])));
-    let sr1: Servicio;
+    return this.http.get<Servicio[]>(this.servicioUrl + "/servicios").pipe(
+      catchError(this.handleError('getServicios', [])));
+    // let sr1: Servicio;
 
-    sr1 = new Servicio();
-    sr1.codigo = 1
-    sr1.cliente = new Cliente();
-    sr1.cliente.codigo = 1;
-    sr1.cliente.nombres = "Jesús Rodriguez";
-    sr1.cliente.empresa = "CML";
-    sr1.producto = new Producto();
-    sr1.producto.codigo = 1;
-    sr1.producto.descrpcion = "Producto 1";
-    sr1.producto.precio = "50.00";
-    sr1.monto = "30.00";
-    sr1.estado = "0";
-    sr1.indSave = "0";
-    this.servTest.push(sr1);
-    return of(this.servTest as Servicio[]);
+    // sr1 = new Servicio();
+    // sr1.codigo = 1
+    // sr1.cliente = new Cliente();
+    // sr1.cliente.codigo = 1;
+    // sr1.cliente.nombres = "Jesús Rodriguez";
+    // sr1.cliente.empresa = "CML";
+    // sr1.producto = new Producto();
+    // sr1.producto.codigo = 1;
+    // sr1.producto.descrpcion = "Producto 1";
+    // sr1.producto.precio = "50.00";
+    // sr1.monto = "30.00";
+    // sr1.estado = "0";
+    // sr1.indSave = "0";
+    // this.servTest.push(sr1);
+    // return of(this.servTest as Servicio[]);
   }
 
   public create(servicio: Servicio): Observable<Transaccion> {
