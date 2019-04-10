@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class ServicioService {
 
-  public servicioUrl = 'http://ec2-18-224-54-25.us-east-2.compute.amazonaws.com:8080/demo'; // URL to web API
+  public servicioUrl = 'http://localhost:49246/api/Debts'; // URL to web API
   public servicios: Servicio[] = [];
   public servicio: Servicio;
   public errorMessage: string;
@@ -31,7 +31,7 @@ export class ServicioService {
 
   private servTest: Servicio[] = [];
   public getServicios(): Observable<Servicio[]> {
-    return this.http.get<Servicio[]>(this.servicioUrl + "/servicios").pipe(
+    return this.http.get<Servicio[]>(this.servicioUrl + "/ListDebts/1/1").pipe(
       catchError(this.handleError('getServicios', [])));
     // let sr1: Servicio;
 

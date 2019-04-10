@@ -20,26 +20,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   public login() {
-    if (this.model.username == "user" && this.model.password == "123") {
-      console.log("usuario", this.model);
-      sessionStorage.setItem("token", this.model.token);
-      this.redirectLogin();
-    } else {
-      console.log("error login", "Usuario y/o password inválidos");
-      this.router.navigate(['/mlogin']);
-    }
+    // if (this.model.username == "user" && this.model.password == "123") {
+    //   console.log("usuario", this.model);
+    //   sessionStorage.setItem("token", this.model.token);
+    //   this.redirectLogin();
+    // } else {
+    //   console.log("error login", "Usuario y/o password inválidos");
+    //   this.router.navigate(['/mlogin']);
+    // }
 
-    // this.service.getToken(this.model).subscribe(
-    //   usuario => {
-    //     console.log("usuario", usuario);
-    //     sessionStorage.setItem("user", usuario);
-    //     this.redirectLogin();
-    //   },
-    //   error => {
-    //     this.errorMessage = <any>error; console.log("error login", this.errorMessage);
-    //     this.router.navigate(['/mlogin']);
-    //   }
-    // );
+    this.service.getToken(this.model).subscribe(
+      usuario => {
+        console.log("usuario", usuario);
+        sessionStorage.setItem("access_Token", usuario.token);
+        this.redirectLogin();
+      },
+      error => {
+        this.errorMessage = <any>error;
+        console.log("error login", this.errorMessage);
+        this.router.navigate(['/mlogin']);
+      }
+    );
   }
 
 

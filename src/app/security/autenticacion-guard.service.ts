@@ -17,9 +17,9 @@ export class AutenticacionGuardService implements CanActivate {
 
   canActivate() {
     this.usuario = new Usuario();
-    this.usuario.token = sessionStorage.getItem('token');
-    if (sessionStorage.getItem('token') != null) {
-      console.log("token:", sessionStorage.getItem('token'));
+    this.usuario.token = sessionStorage.getItem('access_Token');
+    if (sessionStorage.getItem('access_Token') != null) {
+      console.log("token:", sessionStorage.getItem('access_Token'));
       return true
     } else {
       console.log("no hay token");
