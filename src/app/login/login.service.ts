@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class LoginService {
 
-  public servicioUrl = 'http://localhost:49245/api/Token/'; // URL to web API
+  public servicioUrl = 'http://localhost:50440/api/Token/'; // URL to web API
   public usuario: Usuario;
 
   constructor(private http: HttpClient) { }

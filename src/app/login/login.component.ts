@@ -17,18 +17,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private service: LoginService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    sessionStorage.removeItem("access_Token");
+  }
 
   public login() {
-    // if (this.model.username == "user" && this.model.password == "123") {
-    //   console.log("usuario", this.model);
-    //   sessionStorage.setItem("token", this.model.token);
-    //   this.redirectLogin();
-    // } else {
-    //   console.log("error login", "Usuario y/o password inválidos");
-    //   this.router.navigate(['/mlogin']);
-    // }
-
     this.service.getToken(this.model).subscribe(
       usuario => {
         console.log("usuario", usuario);
