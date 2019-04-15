@@ -1,5 +1,6 @@
 import { Component, OnInit, ComponentRef } from '@angular/core';
 import { IModalDialog, IModalDialogOptions } from 'ngx-modal-dialog';
+import { Servicio } from 'src/app/model/app.servicio';
 
 
 @Component({
@@ -9,10 +10,12 @@ import { IModalDialog, IModalDialogOptions } from 'ngx-modal-dialog';
 })
 export class CustomModalComponent implements OnInit, IModalDialog {
   private internalActionButtons = [];
-  parentInfo: string;
+  parentInfo: Servicio;
 
-  dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<string>>) {
-    this.parentInfo = options.data;
+  dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<Servicio>>) {
+    this.parentInfo = options.data; //new Servicio();
+    // var bnd = options.data;
+    // this.parentInfo.cliente.codigo = bnd.cliente.codigo;
     options.actionButtons = this.internalActionButtons;
     this.internalActionButtons.push({
       text: 'Close',
@@ -26,4 +29,7 @@ export class CustomModalComponent implements OnInit, IModalDialog {
   ngOnInit() {
   }
 
+  parseToObject(objString: string) {
+
+  }
 }

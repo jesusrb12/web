@@ -18,7 +18,7 @@ const httpOptions = {
 })
 export class ServicioService {
 
-  public servicioUrl = 'http://rodriguezcore.azurewebsites.net/api/Debts'; // URL to web API
+  public servicioUrl = 'http://jrbcorepayment.azurewebsites.net/api/Debts'; // URL to web API
   public servicios: Servicio[] = [];
   public servicio: Servicio;
   public errorMessage: string;

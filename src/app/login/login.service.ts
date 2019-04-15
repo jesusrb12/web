@@ -14,7 +14,7 @@ const httpOptions = {
 export class LoginService {
 
   //public servicioUrl = 'http://localhost:50440/api/Token/'; // URL to web API
-  public servicioUrl = 'http://rodriguezseguridad.azurewebsites.net/api/Token/'; // URL to web API
+  public servicioUrl = 'http://jrbsecuritypayment.azurewebsites.net/api/Token/'; // URL to web API
   public usuario: Usuario;
 
   constructor(private http: HttpClient) { }

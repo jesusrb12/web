@@ -16,6 +16,7 @@ export class RegistroComponent implements OnInit {
   serviciotmp: Servicio;
   cliente: Cliente;
   errorMessage: string;
+  pag: number = 1;
 
   constructor(private service: ServicioService, private modalDialogService: ModalDialogService, private viewContainer: ViewContainerRef) { }
 

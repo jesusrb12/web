@@ -57,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of servicios | paginate: { itemsPerPage: 2, currentPage: servicio }" (click)="openCustomModal(p)">
+          <tr *ngFor="let p of servicios | paginate: { itemsPerPage: 2, currentPage: pag }" (click)="openCustomModal(p)">
             <td>{{p.codigo}}</td>
             <td>{{p.cliente.nombres}}</td>
             <td>{{p.cliente.codigo}}</td>
@@ -72,7 +72,7 @@
         </tbody>
       </table>
       <div>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="pag = $event"></pagination-controls>
       </div>
     </div>
   </div>
